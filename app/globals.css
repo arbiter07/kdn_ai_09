@@ -26,15 +26,92 @@ body {
   color: var(--ink);
   background: var(--bg);
   font-family:
-    Arial,
+    "Pretendard Variable",
+    Pretendard,
     "Apple SD Gothic Neo",
-    "Noto Sans KR",
     sans-serif;
 }
 
 img {
   display: block;
   max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navBar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  height: 64px;
+}
+
+.navBrand {
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--green);
+}
+
+.navLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.navLink {
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.navLink:hover {
+  color: var(--ink);
+  background: #e7efec;
+}
+
+.navLink.active {
+  color: #ffffff;
+  background: var(--green);
+}
+
+@media (max-width: 520px) {
+  .navInner {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 0;
+  }
+
+  .navLinks {
+    width: 100%;
+  }
+
+  .navLink {
+    padding: 7px 12px;
+    font-size: 0.88rem;
+  }
 }
 
 .page {
@@ -90,6 +167,48 @@ h1 {
   color: var(--muted);
   font-size: 1.12rem;
   line-height: 1.75;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btnPrimary,
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 22px;
+  border-radius: 999px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.btnPrimary {
+  background: var(--green);
+  color: #ffffff;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  background: #0f5e41;
+}
+
+.btnGhost {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.btnGhost:hover {
+  transform: translateY(-1px);
+  background: #eef4f1;
 }
 
 .heroVisual {
@@ -226,6 +345,168 @@ h1 {
   font-weight: 800;
 }
 
+.slideViewer {
+  display: grid;
+  gap: 22px;
+}
+
+.slideStage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 420px;
+  padding: 56px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.slideEyebrow {
+  margin: 0 0 18px;
+  color: var(--green);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.slideTitle {
+  margin-bottom: 20px;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.12;
+}
+
+.slideBody {
+  max-width: 44rem;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.slideControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.slideBtn {
+  padding: 12px 22px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.98rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.slideBtn:hover {
+  transform: translateY(-1px);
+  background: var(--green);
+  color: #ffffff;
+}
+
+.slideIndicator {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.slideDots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.slideDot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.slideDot.active {
+  border-color: var(--green);
+  background: var(--green);
+}
+
+.slideHint {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.videoFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #000000;
+  box-shadow: var(--shadow);
+}
+
+.videoFrame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.videoCaption {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.cardDetailList {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.cardDetail {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 12px 28px rgba(25, 47, 42, 0.08);
+}
+
+.cardDetail .marker {
+  margin-bottom: 0;
+  width: 64px;
+  height: 64px;
+  font-size: 2rem;
+}
+
+.cardDetail h3 {
+  margin-bottom: 10px;
+  font-size: 1.35rem;
+}
+
+.cardDetail p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
 @media (max-width: 900px) {
   .page {
     width: min(100% - 28px, 680px);
@@ -273,6 +554,21 @@ h1 {
 
   .sectionHeader {
     padding-top: 38px;
+  }
+
+  .slideStage {
+    min-height: 320px;
+    padding: 28px;
+  }
+
+  .slideControls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cardDetail {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
 
