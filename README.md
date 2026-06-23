@@ -16,18 +16,18 @@ npm test
 npm audit --omit=dev
 ```
 
-## Cloudflare Pages
+## Cloudflare Workers
 
-GitHub 저장소를 연결한 뒤 Cloudflare Pages의 프로젝트 설정에서 아래 값으로 배포합니다.
+GitHub 저장소를 연결한 Cloudflare Workers 프로젝트에서는 아래 값으로 빌드합니다.
 
 ```text
-Build command: npm run build
-Build output directory: out
+Build command: npm run cf:build
 Root directory: 비워둠
-Production branch: main
 ```
 
-기존 Build command가 `exit 0`이면 Cloudflare Pages 대시보드에서 프로젝트를 열고
-`Settings > Build & deployments > Build configurations`로 이동한 뒤 Build command를
-`npm run build`로 바꿉니다. 저장 후 `Deployments` 탭에서 최신 커밋을 다시 배포하거나,
-GitHub에 새 커밋을 푸시하면 자동으로 재배포됩니다.
+이 프로젝트는 OpenNext Cloudflare adapter를 사용하므로 별도 output directory를 입력하지
+않습니다. 기존 Build command가 `exit 0`이면 Cloudflare 대시보드에서 프로젝트를 열고
+`Settings > Build` 또는 `Settings > Builds & deployments`의 Build command를
+`npm run cf:build`로 바꿉니다.
+
+저장 후 최신 커밋을 재배포하거나, GitHub에 새 커밋을 푸시하면 자동으로 다시 배포됩니다.
