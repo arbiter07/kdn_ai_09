@@ -1,42 +1,37 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 const slides = [
   {
-    eyebrow: "Cover",
-    title: "9조 ESG 프로젝트",
-    body: "한전KDN 연수 9조 · 지속가능한 미래를 위한 ESG 이야기"
+    eyebrow: "01 Cover",
+    title: "데이터로 전력을 잇고, 신뢰로 미래를 밝히다",
+    body: "한전KDN의 ESG 이야기를 밝고 친근한 카드뉴스 톤으로 여는 표지입니다.",
+    image: "/kdn/cover-light-16x9.png"
   },
   {
-    eyebrow: "Intro",
-    title: "왜 ESG인가요?",
-    body: "기업과 사회의 지속가능성을 평가하는 새로운 기준, 환경·사회·지배구조를 소개합니다."
+    eyebrow: "02 Planning",
+    title: "카드뉴스 내용 분석 및 구성 방향",
+    body: "친환경, 상생, 신뢰를 중심으로 5장 카드 흐름을 설계했습니다.",
+    image: "/kdn/planning-light-16x9.png"
   },
   {
-    eyebrow: "Environment",
-    title: "환경 (E)",
-    body: "탄소 배출, 에너지 효율, 재생에너지 전환 등 측정 가능한 환경 지표를 살펴봅니다."
+    eyebrow: "03 Card News",
+    title: "완성 카드뉴스 시안",
+    body: "도입, 환경, 사회, 지배구조, 마무리 순서로 메시지를 이어갑니다.",
+    image: "/kdn/cardnews-01.png"
   },
   {
-    eyebrow: "Social",
-    title: "사회 (S)",
-    body: "안전, 노동, 지역사회, 공급망 등 사람과 관계에 대한 책임을 다룹니다."
+    eyebrow: "04 AI Process",
+    title: "영상 AI 활용 및 프로젝트 소감",
+    body: "AI는 초안을 빠르게 만들고, 팀은 메시지의 방향과 신뢰를 완성했습니다.",
+    image: "/kdn/soft-network-16x9.png"
   },
   {
-    eyebrow: "Governance",
-    title: "지배구조 (G)",
-    body: "투명한 의사결정, 윤리경영, 정보공개로 신뢰를 만드는 구조를 설명합니다."
-  },
-  {
-    eyebrow: "Our Work",
-    title: "우리가 만든 것",
-    body: "ESG 핵심 메시지를 담은 카드뉴스와 소개 영상을 제작했습니다."
-  },
-  {
-    eyebrow: "Closing",
-    title: "감사합니다",
-    body: "9조의 ESG 프로젝트 발표를 마칩니다. 질문을 환영합니다!"
+    eyebrow: "05 Video",
+    title: "영상 삽입 샘플",
+    body: "영상팀 결과물이 오면 밝은 분위기의 중앙 프레임에 바로 연결할 수 있습니다.",
+    image: "/kdn/video-bright-16x9.png"
   }
 ];
 
@@ -52,67 +47,56 @@ export default function SlidesPage() {
     setIndex((i) => (i + 1) % total);
   }, [total]);
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") goPrev();
-      if (e.key === "ArrowRight") goNext();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [goPrev, goNext]);
-
   const slide = slides[index];
 
   return (
     <main className="page">
-      <section className="sectionHeader" aria-labelledby="slides-title">
+      <section className="sectionHeader centered" aria-labelledby="slides-title">
         <p className="eyebrow">Presentation</p>
-        <h2 id="slides-title">발표 슬라이드</h2>
+        <h1 id="slides-title" className="pageTitle">
+          PPT 발표 흐름
+        </h1>
+        <p className="sectionLead">
+          실제 PPT의 5페이지 구성과 같은 순서로 웹에서도 확인할 수 있습니다.
+        </p>
       </section>
 
-      <section className="slideViewer" aria-label="발표 슬라이드 뷰어">
-        <div className="slideStage" role="group" aria-roledescription="slide">
-          <p className="slideEyebrow">{slide.eyebrow}</p>
-          <h3 className="slideTitle">{slide.title}</h3>
-          <p className="slideBody">{slide.body}</p>
+      <section className="pptViewer" aria-label="발표 슬라이드 뷰어">
+        <div className="pptStage">
+          <img src={slide.image} alt="" />
+          <div className="pptOverlay">
+            <p>{slide.eyebrow}</p>
+            <h2>{slide.title}</h2>
+            <span>{slide.body}</span>
+          </div>
         </div>
 
         <div className="slideControls">
-          <button
-            type="button"
-            className="slideBtn"
-            onClick={goPrev}
-            aria-label="이전 슬라이드"
-          >
-            ← 이전
+          <button type="button" className="slideBtn" onClick={goPrev}>
+            이전
           </button>
           <span className="slideIndicator">
             {index + 1} / {total}
           </span>
-          <button
-            type="button"
-            className="slideBtn"
-            onClick={goNext}
-            aria-label="다음 슬라이드"
-          >
-            다음 →
+          <button type="button" className="slideBtn" onClick={goNext}>
+            다음
           </button>
         </div>
 
-        <div className="slideDots" aria-hidden="true">
-          {slides.map((s, i) => (
+        <div className="thumbRail" aria-label="슬라이드 선택">
+          {slides.map((item, i) => (
             <button
-              key={s.title}
+              key={item.eyebrow}
               type="button"
-              className={`slideDot${i === index ? " active" : ""}`}
+              className={`thumbButton${i === index ? " active" : ""}`}
               onClick={() => setIndex(i)}
-              aria-label={`${i + 1}번 슬라이드로 이동`}
-            />
+            >
+              <img src={item.image} alt="" />
+              <span>{item.eyebrow}</span>
+            </button>
           ))}
         </div>
       </section>
-
-      <p className="slideHint">키보드 좌우 화살표(← →)로도 넘길 수 있어요.</p>
     </main>
   );
 }

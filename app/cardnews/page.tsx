@@ -1,90 +1,79 @@
 const cards = [
   {
-    marker: "E",
-    label: "Environment",
-    title: "환경은 숫자로 말합니다",
-    lead: "탄소 배출, 에너지 사용량, 재활용률처럼 비교 가능한 지표를 먼저 정리합니다.",
-    detail: "핵심 환경 지표 3개를 골라 변화 추이를 카드뉴스로 보여줍니다.",
-    accent: "green"
+    number: "01",
+    label: "도입",
+    title: "한전KDN의 ESG 이야기",
+    summary: "친환경, 상생, 신뢰라는 세 키워드를 한 번에 각인시키는 표지입니다.",
+    image: "/kdn/cardnews-01.png"
   },
   {
-    marker: "S",
-    label: "Social",
-    title: "사람 중심의 지속가능성",
-    lead: "안전, 접근성, 지역사회, 공급망처럼 이해관계자에게 닿는 영향을 살펴봅니다.",
-    detail: "사회 영역은 사례 중심으로 풀어내면 읽는 사람이 빠르게 공감할 수 있습니다.",
-    accent: "blue"
+    number: "02",
+    label: "환경",
+    title: "지속가능한 미래를 위한 친환경 실천",
+    summary: "탄소중립, 온실가스 감축, RE100을 환경경영의 핵심으로 제시합니다.",
+    image: "/kdn/cardnews-02.png"
   },
   {
-    marker: "G",
-    label: "Governance",
-    title: "신뢰는 투명성에서 시작됩니다",
-    lead: "의사결정 구조, 정보 공개, 윤리 기준은 ESG의 실행력을 보여주는 근거입니다.",
-    detail: "보고서, 정책, 평가 기준을 연결해 신뢰를 만드는 흐름을 시각화합니다.",
-    accent: "gold"
-  }
-];
-
-const explanations = [
-  {
-    marker: "E",
-    accent: "green",
-    title: "환경 (Environment)",
-    body: "기후변화 대응, 자원 순환, 오염 저감처럼 지구에 미치는 영향을 다룹니다. 측정 가능한 데이터로 변화를 보여줄 때 메시지가 가장 또렷해집니다."
+    number: "03",
+    label: "사회",
+    title: "함께 웃는 상생의 가치",
+    summary: "동반성장, 중소기업 지원제도, 사회공헌 활동을 따뜻한 이미지로 전달합니다.",
+    image: "/kdn/cardnews-03.png"
   },
   {
-    marker: "S",
-    accent: "blue",
-    title: "사회 (Social)",
-    body: "임직원 안전, 인권, 다양성, 지역사회 기여 등 사람과의 관계를 다룹니다. 실제 사례와 이야기로 전달하면 공감대가 빠르게 형성됩니다."
+    number: "04",
+    label: "지배구조",
+    title: "투명하고 바른 신뢰의 기준",
+    summary: "청렴, 윤리경영, 부패방지 인증, 정보공개 AAA를 신뢰의 근거로 정리합니다.",
+    image: "/kdn/cardnews-04.png"
   },
   {
-    marker: "G",
-    accent: "gold",
-    title: "지배구조 (Governance)",
-    body: "투명한 의사결정, 윤리경영, 정보공개 체계를 다룹니다. 환경·사회 활동이 지속되도록 뒷받침하는 신뢰의 기반입니다."
+    number: "05",
+    label: "마무리",
+    title: "세상을 밝히는 착한 에너지",
+    summary: "한전KDN의 ESG가 친환경, 상생, 신뢰의 미래로 계속된다는 결론입니다.",
+    image: "/kdn/cardnews-05.png"
   }
 ];
 
 export default function CardNewsPage() {
   return (
     <main className="page">
-      <section className="sectionHeader" aria-labelledby="cards-title">
+      <section className="sectionHeader centered" aria-labelledby="cards-title">
         <p className="eyebrow">Card News</p>
-        <h2 id="cards-title">ESG 핵심 카드</h2>
+        <h1 id="cards-title" className="pageTitle">
+          완성 카드뉴스 5장
+        </h1>
+        <p className="sectionLead">
+          PPT 3페이지와 같은 구성으로 카드 간격과 중앙 정렬을 맞췄습니다.
+        </p>
       </section>
 
-      <section className="cardGrid" aria-label="ESG 카드뉴스 목록">
-        {cards.map((card, index) => (
-          <article className={`newsCard ${card.accent}`} key={card.marker}>
-            <div className="cardTopline">
-              <span className="cardNumber">0{index + 1}</span>
-              <span className="cardLabel">{card.label}</span>
+      <section className="posterGrid" aria-label="카드뉴스 이미지 목록">
+        {cards.map((card) => (
+          <article className="posterCard" key={card.number}>
+            <img src={card.image} alt={`${card.number} ${card.title}`} />
+            <div className="posterMeta">
+              <span>{card.number}</span>
+              <strong>{card.label}</strong>
             </div>
-            <div className="marker" aria-hidden="true">
-              {card.marker}
-            </div>
-            <h3>{card.title}</h3>
-            <p className="lead">{card.lead}</p>
-            <p>{card.detail}</p>
           </article>
         ))}
       </section>
 
-      <section className="sectionHeader" aria-labelledby="explain-title">
-        <p className="eyebrow">Explanation</p>
-        <h2 id="explain-title">카드뉴스 설명</h2>
+      <section className="sectionHeader" aria-labelledby="analysis-title">
+        <p className="eyebrow">Content Analysis</p>
+        <h2 id="analysis-title">2페이지에 반영한 내용 흐름</h2>
       </section>
 
-      <section className="cardDetailList" aria-label="카드뉴스 설명 목록">
-        {explanations.map((item) => (
-          <article className={`cardDetail ${item.accent}`} key={item.marker}>
-            <div className="marker" aria-hidden="true">
-              {item.marker}
-            </div>
+      <section className="analysisList" aria-label="카드뉴스 내용 분석">
+        {cards.map((card) => (
+          <article className="analysisItem" key={card.number}>
+            <span className="analysisNumber">{card.number}</span>
             <div>
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
+              <p className="analysisLabel">{card.label}</p>
+              <h3>{card.title}</h3>
+              <p>{card.summary}</p>
             </div>
           </article>
         ))}

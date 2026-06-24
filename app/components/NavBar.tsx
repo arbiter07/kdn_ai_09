@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ThemeToggle from "./ThemeToggle";
 
 const links = [
-  { href: "/", label: "소개" },
-  { href: "/slides", label: "발표 슬라이드" },
-  { href: "/video", label: "영상" },
-  { href: "/cardnews", label: "카드뉴스" }
+  { href: "/", label: "프로젝트" },
+  { href: "/cardnews", label: "카드뉴스" },
+  { href: "/slides", label: "PPT 흐름" },
+  { href: "/video", label: "영상" }
 ];
 
 export default function NavBar() {
@@ -18,7 +17,8 @@ export default function NavBar() {
     <header className="navBar">
       <div className="navInner">
         <Link href="/" className="navBrand">
-          9조 ESG
+          <img src="/kdn/logo-hanjeon-kdn.png" alt="한전KDN" />
+          <span>ESG Story</span>
         </Link>
         <div className="navRight">
           <nav className="navLinks" aria-label="주요 메뉴">
@@ -39,7 +39,6 @@ export default function NavBar() {
               );
             })}
           </nav>
-          <ThemeToggle />
         </div>
       </div>
     </header>
