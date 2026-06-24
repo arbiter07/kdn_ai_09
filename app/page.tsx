@@ -44,6 +44,9 @@ export default function Home() {
                 data-video-path="/kdn/video/esg-song.m4v"
                 data-video-slot="same-folder-embed"
               >
+                <p className="videoQualityNote">
+                  용량 이슈로 인해 화질이 저하됩니다.
+                </p>
                 <video
                   controls
                   playsInline

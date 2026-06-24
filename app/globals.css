@@ -41,7 +41,7 @@ img {
 
 .slideViewport {
   width: 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
@@ -74,6 +74,27 @@ img {
   height: 45.6%;
 }
 
+.videoQualityNote {
+  position: absolute;
+  top: 4.2%;
+  right: 4%;
+  left: 4%;
+  z-index: 3;
+  display: grid;
+  min-height: 11%;
+  place-items: center;
+  margin: 0;
+  border-radius: 999px;
+  color: #1d2630;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: clamp(0.62rem, 1.05vw, 1rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+  box-shadow: 0 8px 22px rgba(18, 31, 46, 0.12);
+  pointer-events: none;
+}
+
 .videoEmbedSlot video,
 .videoEmbedSlot iframe {
   width: 100%;
@@ -99,22 +120,24 @@ img {
   .deck {
     gap: 18px;
     width: 100%;
-    padding: 12px 0 22px;
+    padding: 12px 10px 22px;
   }
 
   .slideViewport {
-    padding: 0 10px 8px;
-    scrollbar-gutter: stable;
+    padding: 0;
   }
 
   .slide {
-    width: max(calc(100vw - 20px), 760px);
-    max-width: none;
+    width: 100%;
   }
 }
 
 @media (max-width: 420px) {
-  .slide {
-    width: 720px;
+  .videoQualityNote {
+    top: 3%;
+    right: 3%;
+    left: 3%;
+    min-height: 14%;
+    font-size: 0.55rem;
   }
 }
