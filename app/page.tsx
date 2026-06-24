@@ -38,22 +38,24 @@ export default function Home() {
               alt={`${slide.label} PPT 슬라이드`}
             />
             {slide.hasVideoSlot ? (
-              <div
-                aria-label="영상 임베드 위치"
-                className="videoEmbedSlot"
-                data-video-path="/kdn/video/esg-song.m4v"
-                data-video-slot="same-folder-embed"
-              >
+              <>
                 <p className="videoQualityNote">
                   용량 이슈로 인해 화질이 저하됩니다.
                 </p>
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  src="/kdn/video/esg-song.m4v"
-                />
-              </div>
+                <div
+                  aria-label="영상 임베드 위치"
+                  className="videoEmbedSlot"
+                  data-video-path="/kdn/video/esg-song.m4v"
+                  data-video-slot="same-folder-embed"
+                >
+                  <video
+                    controls
+                    playsInline
+                    preload="metadata"
+                    src="/kdn/video/esg-song.m4v"
+                  />
+                </div>
+              </>
             ) : null}
             <span className="srOnly">{index + 1}번째 슬라이드</span>
           </div>

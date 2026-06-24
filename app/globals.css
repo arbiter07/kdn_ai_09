@@ -76,12 +76,12 @@ img {
 
 .videoQualityNote {
   position: absolute;
-  top: 4.2%;
-  right: 4%;
-  left: 4%;
+  top: 26.7%;
+  left: 17.55%;
   z-index: 3;
   display: grid;
-  min-height: 11%;
+  width: 65.1%;
+  min-height: 4.8%;
   place-items: center;
   margin: 0;
   border-radius: 999px;
@@ -134,10 +134,10 @@ img {
 
 @media (max-width: 420px) {
   .videoQualityNote {
-    top: 3%;
-    right: 3%;
-    left: 3%;
-    min-height: 14%;
+    top: 25.9%;
+    left: 17.55%;
+    width: 65.1%;
+    min-height: 5.6%;
     font-size: 0.55rem;
   }
 }
