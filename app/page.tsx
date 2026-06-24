@@ -41,14 +41,14 @@ export default function Home() {
               <div
                 aria-label="영상 임베드 위치"
                 className="videoEmbedSlot"
-                data-video-path="/kdn/video/esg-song.mp4"
+                data-video-path="/kdn/video/esg-song.m4v"
                 data-video-slot="same-folder-embed"
               >
                 <video
                   controls
                   playsInline
                   preload="metadata"
-                  src="/kdn/video/esg-song.mp4"
+                  src="/kdn/video/esg-song.m4v"
                 />
               </div>
             ) : null}
