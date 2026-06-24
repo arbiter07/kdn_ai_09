@@ -17,6 +17,7 @@ html {
 body {
   min-height: 100%;
   margin: 0;
+  overflow-x: hidden;
   background: var(--page-bg);
   font-family:
     "Pretendard Variable",
@@ -36,6 +37,14 @@ img {
   width: min(100%, 1560px);
   margin: 0 auto;
   padding: 28px;
+}
+
+.slideViewport {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .slide {
@@ -88,7 +97,24 @@ img {
 
 @media (max-width: 720px) {
   .deck {
-    gap: 16px;
-    padding: 12px;
+    gap: 18px;
+    width: 100%;
+    padding: 12px 0 22px;
+  }
+
+  .slideViewport {
+    padding: 0 10px 8px;
+    scrollbar-gutter: stable;
+  }
+
+  .slide {
+    width: max(calc(100vw - 20px), 760px);
+    max-width: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .slide {
+    width: 720px;
   }
 }

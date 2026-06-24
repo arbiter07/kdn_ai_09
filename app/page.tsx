@@ -27,24 +27,26 @@ export default function Home() {
     <main className="deck" aria-label="한전KDN ESG 발표 웹 슬라이드">
       {slides.map((slide, index) => (
         <section
-          className="slide"
+          className="slideViewport"
           aria-label={slide.label}
           key={slide.src}
         >
-          <img
-            className="pptSlide"
-            src={slide.src}
-            alt={`${slide.label} PPT 슬라이드`}
-          />
-          {slide.hasVideoSlot ? (
-            <div
-              aria-label="영상 임베드 위치"
-              className="videoEmbedSlot"
-              data-video-path="./ESG_song.mp4"
-              data-video-slot="same-folder-embed"
+          <div className="slide">
+            <img
+              className="pptSlide"
+              src={slide.src}
+              alt={`${slide.label} PPT 슬라이드`}
             />
-          ) : null}
-          <span className="srOnly">{index + 1}번째 슬라이드</span>
+            {slide.hasVideoSlot ? (
+              <div
+                aria-label="영상 임베드 위치"
+                className="videoEmbedSlot"
+                data-video-path="./ESG_song.mp4"
+                data-video-slot="same-folder-embed"
+              />
+            ) : null}
+            <span className="srOnly">{index + 1}번째 슬라이드</span>
+          </div>
         </section>
       ))}
     </main>
