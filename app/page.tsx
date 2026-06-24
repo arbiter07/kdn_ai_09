@@ -43,7 +43,14 @@ export default function Home() {
                 className="videoEmbedSlot"
                 data-video-path="/kdn/video/esg-song.mp4"
                 data-video-slot="same-folder-embed"
-              />
+              >
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  src="/kdn/video/esg-song.mp4"
+                />
+              </div>
             ) : null}
             <span className="srOnly">{index + 1}번째 슬라이드</span>
           </div>
